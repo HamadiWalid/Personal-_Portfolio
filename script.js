@@ -45,6 +45,7 @@ window.addEventListener("mousemove", function (e) {
   );
 });
 
+//txttype
 var TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -102,3 +103,54 @@ window.onload = function () {
   css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
   document.body.appendChild(css);
 };
+
+//Langage
+
+document.addEventListener("DOMContentLoaded", () => {
+  const langButtons = document.querySelectorAll(".language-btn");
+
+  langButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.getAttribute("data-lang");
+      changeLanguage(lang);
+
+      // Toggle button visibility
+      toggleLanguageButtons(lang);
+    });
+  });
+
+  function changeLanguage(lang) {
+    const translatableElements = document.querySelectorAll("[data-en]");
+
+    translatableElements.forEach((element) => {
+      if (
+        element.tagName.toLowerCase() === "input" &&
+        element.hasAttribute("placeholder")
+      ) {
+        element.placeholder = element.dataset[lang];
+      } else if (
+        element.tagName.toLowerCase() === "a" &&
+        element.hasAttribute("data-href-en")
+      ) {
+        element.href = element.getAttribute(`data-href-${lang}`);
+        element.download = element.getAttribute(`data-download-${lang}`);
+        element.textContent = element.dataset[lang];
+      } else {
+        element.textContent = element.dataset[lang];
+      }
+    });
+  }
+
+  function toggleLanguageButtons(lang) {
+    const enButton = document.getElementById("enBtn");
+    const frButton = document.getElementById("frBtn");
+
+    if (lang === "fr") {
+      enButton.style.display = "none";
+      frButton.style.display = "inline-block";
+    } else {
+      enButton.style.display = "inline-block";
+      frButton.style.display = "none";
+    }
+  }
+});

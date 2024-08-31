@@ -757,6 +757,32 @@ h1 > span {
   animation: rotate-up-down 3s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
+/*Langage*/
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.language-btn {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  color: #89ca9f;
+  border-radius: 45px;
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-btn:hover {
+  color: #7abf8f;
+}
+
+.language-btn[style*="display: none"] {
+  display: none;
+}
+
 @keyframes rotate-up-down {
   0% {
     transform: rotate(0deg);
@@ -796,6 +822,9 @@ h1 > span {
   .contact__rings {
     translate: -40%;
   }
+  .language-btn {
+    margin-top: 10px;
+  }
 }
 
 /* 999.98px */
@@ -809,6 +838,11 @@ h1 > span {
   }
   .tr {
     display: none;
+  }
+}
+@media (max-width: 37.49875em) {
+  .language-btn {
+    margin-top: 0px;
   }
 }
 
